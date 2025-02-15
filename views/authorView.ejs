@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Author</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <div class="container d-flex justify-content-center">
+        <div class="card shadow-lg p-4 rounded mt-4 mb-4 bg-secondary w-50" style="width: 350px;">
+            <h2 class="text-center mb-3 ">Author Details</h2>
+            <form class="">
+                <div class="mb-3">
+                    <label for="authorName" class="form-label fs-5 fw-bold">Author Name</label>
+                    <input type="text" class="form-control" name="authorName" id="authorName" placeholder="Author Name" aria-describedby="authorName">
+                </div>
+                <div class="mb-3">
+                    <label for="bio" class="form-label fs-5 fw-bold">Enter your Bio</label>
+                    <textarea class="form-control rounded" name="bio" id="bio" placeholder="I am author " rows="5" cols="70"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="nationality" class="form-label fs-5 fw-bold">Nationality</label>
+                    <input type="text" class="form-control" name="nationality" placeholder="Nationality " id="nationality">
+                </div>
+
+                <div class="mb-3">
+                    <label for="books" class="form-label fs-5 fw-bold">Books</label>
+                    <input type="text" class="form-control" name="books" placeholder="Books" id="books">
+                </div>
+
+                <div class="mb-3">
+                    <label for="socialLinks" class="form-label fs-5 fw-bold">Social Links</label>
+                    <div class="mt-1 border border-dark py-2 px-3 rounded">
+                        <div class="mb-2">
+                            <label for="instagram" class="form-label fw-bold">Instagram</label>
+                            <input type="text" class="form-control" name="instagram" placeholder="https://Instagram.com" id="instagram">
+                        </div>
+                        <div class="mb-2"> 
+                            <label for="Twitter"class="form-label fw-bold" >Twitter</label>
+                            <input type="text" class="form-control" name="twitter" placeholder="https://Twitter.com" id="instagram">
+                        </div>
+                        <div class="mb-2">
+                            <label for="instagram" class="form-label fw-bold">Linkedin</label>
+                            <input type="text" class="form-control" name="linkedin" placeholder="https://Linkedin.com" id="instagram">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </form>
+        </div>
+    </div>
+    <%- include('./partials/script') %>
+</body>
+</html>
