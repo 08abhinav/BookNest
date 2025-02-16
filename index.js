@@ -4,6 +4,7 @@ import {dbConnect} from "./config.js"
 import path from 'path'
 import staticRoute from './routes/staticRoutes.js';
 import authorRoute from './routes/authorRoutes.js';
+import authorCreation from './routes/authorCreation.js';
 
 const app = express()
 
@@ -14,7 +15,7 @@ app.use(express.json())
 
 app.use('/', staticRoute)
 app.use('/author-api', authorRoute)
-
+app.use('/author', authorCreation)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, ()=>{console.log(`App running on port: ${PORT}`)})
