@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>BookNest</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <div class="container text-center mt-5">
+        <h2 class="text-info">Welcome to BookNest</h2>
+        <p class="text-info fs-4">Choose how you want to get started</p>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card border border-3 border-success shadow-lg">
+                    <div class="card-body bg-dark">
+                        <h3 class="card-title text-success">Start as an Author</h3>
+                        <p class="card-text text-success">As an author, you can add your books, view ratings, and track how many readers have read your books.</p>
+                        <a href="authorLogin" class="btn btn-outline-warning">Start as Author</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border border-3 border-success shadow-lg">
+                    <div class="card-body bg-dark">
+                        <h3 class="card-title text-success">Start as a User</h3>
+                        <p class="card-text text-success">As a user, you can read books, track your reading progress, and pick up where you left off.</p>
+                        <a href="#" class="btn btn-outline-warning">Start as User</a>
+                    </div>
+                </div>
+            </div>
+            <div class="contianer mt-4">
+                <a href="/" class="btn btn-outline-primary w-25">Go Back</a>
+            </div>
+        </div>
+    </div>
+    <%- include('./partials/script') %>
+
+</body>
+</html>
