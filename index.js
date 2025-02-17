@@ -6,8 +6,8 @@ import {checkForAuthentication, checkForUserAuthentication} from "./middleware/a
 import staticRoute from './routes/staticRoutes.js';
 import authorRoute from './routes/authorRoutes.js';
 import authorCreation from './routes/authorCreation.js';
-import authorCreation from './routes/userCreation.js';
 import cookieParser from 'cookie-parser';
+import userCreation from './routes/userCreation.js';
 
 const app = express()
 

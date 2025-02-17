@@ -21,3 +21,13 @@ export const handleAuthorLoginView = (req, res)=>{
 export const handleAuthorHome = (req, res)=>{
     return res.render('authorHome', {author: req.author})
 }
+
+
+//User's
+export const handleUserSignup = (req, res)=>{
+    return res.render('userSignup')
+}
+
+export const handleUserLogin = (req, res)=>{
+    return res.render('userLogin')
+}

@@ -1,5 +1,6 @@
 import express from "express"
-import { handleUserSignin, handleUserSignOut, handleUserSignUp } from "../controllers/userCredentials"
+import { handleUserSignin, handleUserSignOut,
+handleUserSignUp } from "../controllers/userCredentials.js"
 
 const userCreation = express.Router()
 
