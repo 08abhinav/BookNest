@@ -1,5 +1,5 @@
 export const handleHomeView = async (req, res)=>{
-    return res.render('home', {author: req.user})
+    return res.render('home', {author: req.author})
 }   
 
 export const handleGetStarted = (req, res)=>{
@@ -19,5 +19,5 @@ export const handleAuthorLoginView = (req, res)=>{
 }
 
 export const handleAuthorHome = (req, res)=>{
-    return res.render('authorHome', {author: req.user})
+    return res.render('authorHome', {author: req.author})
 }

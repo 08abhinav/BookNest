@@ -2,7 +2,7 @@ import 'dotenv/config';
 import express from "express"
 import {dbConnect} from "./config.js"
 import path from 'path'
-import {checkForAuthentication} from "./middleware/authentication.js"
+import {checkForAuthentication, checkForUserAuthentication} from "./middleware/authentication.js"
 import staticRoute from './routes/staticRoutes.js';
 import authorRoute from './routes/authorRoutes.js';
 import authorCreation from './routes/authorCreation.js';
@@ -16,6 +16,7 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(cookieParser())
 app.use(checkForAuthentication("token"))
+app.use(checkForUserAuthentication("user"))
 
 app.use('/', staticRoute)
 app.use('/author-api', authorRoute)
