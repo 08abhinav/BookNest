@@ -19,7 +19,7 @@ export const handleAuthorSignin = async(req, res)=>{
         if(!email || !password) return res.send({message: "All fields are required"});
 
         const author = await AuthorModel.matchPasswordAndGenerateToken(email, password)
-        return res.cookie("token", author).redirect("/")
+        return res.cookie("token", author).redirect("/authorHome")
     } catch (error) {
         return res.json({message: "Something went wrong while sign in", err: error.message})
     }

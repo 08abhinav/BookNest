@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Author Home - BookNest</title>
+</head>
+<body class="bg-dark">
+    <%- include('./partials/nav') %>
+    <div class="container mt-5 ">
+        <h1 class="text-info text-center">Welcome to BookNest, Author!</h1>
+        <div class="card shadow-lg p-4 mt-4 bg-dark">
+            <h3 class="text-info">What is BookNest?</h3>
+            <p class="text-success">BookNest is a platform where authors can share their books with a wide audience. Post your books, engage with readers, and grow your fan base!</p>
+        </div>
+        
+        <div class="card shadow-lg p-4 mt-4 bg-dark">
+            <h3 class="text-info">Your Author Dashboard</h3>
+            <ul class="text-success">
+                <li>View your published books</li>
+                <li>Track the number of readers</li>
+                <li>Check reviews and feedback</li>
+            </ul>
+            <div class="text-center mt-3">
+                <button class="btn btn-info text-white fw-bold">Start Posting a Book</button>
+            </div>
+        </div>
+    </div>
+    <%- include('./partials/script') %>
+</body>
+</html>
