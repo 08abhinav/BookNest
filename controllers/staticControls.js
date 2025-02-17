@@ -33,5 +33,5 @@ export const handleUserLogin = (req, res)=>{
 }
 
 export const handleUserHome = (req, res)=>{
-    return res.render('userHome')
+    return res.render('userHome', {user: req.user})
 }
