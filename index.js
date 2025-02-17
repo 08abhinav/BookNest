@@ -6,6 +6,7 @@ import {checkForAuthentication, checkForUserAuthentication} from "./middleware/a
 import staticRoute from './routes/staticRoutes.js';
 import authorRoute from './routes/authorRoutes.js';
 import authorCreation from './routes/authorCreation.js';
+import authorCreation from './routes/userCreation.js';
 import cookieParser from 'cookie-parser';
 
 const app = express()
@@ -21,6 +22,7 @@ app.use(checkForUserAuthentication("user"))
 app.use('/', staticRoute)
 app.use('/author-api', authorRoute)
 app.use('/author', authorCreation)
+app.use('/user', userCreation)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, ()=>{console.log(`App running on port: ${PORT}`)})
