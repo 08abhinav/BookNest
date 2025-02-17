@@ -1,5 +1,5 @@
-import mongoose, { model, Schema } from "mongoose";
-import { createToken } from "../services/authorization.js";
+import { model, Schema } from "mongoose";
+import { createUserToken} from "../services/authorization.js";
 import bcrypt from "bcrypt"
 
 const userSchema = new Schema({
@@ -19,7 +19,7 @@ const userSchema = new Schema({
 
 userSchema.pre("save", async function(next){
     const user = this;
-    if(!user.isModified('password')) return next();
+    if(!user.isModified('password')) {return next();}
 
     const salt = 10;
     const hashedPassword = await bcrypt.hash(user.password, salt);
@@ -31,13 +31,12 @@ userSchema.pre("save", async function(next){
 
 userSchema.static("matchUserPasswordAndGenerateUserToken", async function(email, password){
     const user = await this.findOne({email})
-
     if(!user) throw new Error("Email not found");
 
-    const isMatch = bcrypt.compare(password, author.password)
+    const isMatch = await bcrypt.compare(password, user.password)
     if(!isMatch) throw new Error("Incorrect password");
 
-    const token = createToken(author)
+    const token = createUserToken(user)
     return token
 })
 

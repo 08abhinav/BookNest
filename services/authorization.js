@@ -1,7 +1,8 @@
+import "dotenv/config"
 import jwt from "jsonwebtoken"
 
-const secret = "$ecret$uperM@N_69"
-const userSecret = "$ecretU$ER__"
+const secret = process.env.SECRET
+const userSecret = process.env.USER_SECRET
 
 
 //Author's token creation

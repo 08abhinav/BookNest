@@ -31,3 +31,7 @@ export const handleUserSignup = (req, res)=>{
 export const handleUserLogin = (req, res)=>{
     return res.render('userLogin')
 }
+
+export const handleUserHome = (req, res)=>{
+    return res.render('userHome')
+}

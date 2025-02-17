@@ -1,7 +1,8 @@
 import express from "express"
 import { handleAuthorHome, handleAuthorLoginView, handleAuthorSigninView, 
 handleAuthorView, handleGetStarted, handleHomeView, 
-handleUserSignup, handleUserLogin } from "../controllers/staticControls.js";
+handleUserSignup, handleUserLogin, 
+handleUserHome} from "../controllers/staticControls.js";
  
 
 const staticRoute = express.Router()
@@ -19,6 +20,7 @@ staticRoute.get('/getStarted', handleGetStarted)
 //User's static routes
 staticRoute.get('/userLogin', handleUserLogin)
 staticRoute.get('/userSignup', handleUserSignup)
+staticRoute.get('/userHome', handleUserHome)
 
 
 export default staticRoute;
