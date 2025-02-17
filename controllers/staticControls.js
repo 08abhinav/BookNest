@@ -1,5 +1,5 @@
-export const handleHomeView = (req, res)=>{
-    return res.render('home')
+export const handleHomeView = async (req, res)=>{
+    return res.render('home', {author: req.user})
 }   
 
 export const handleGetStarted = (req, res)=>{
