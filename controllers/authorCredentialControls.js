@@ -24,3 +24,7 @@ export const handleAuthorSignin = async(req, res)=>{
         return res.json({message: "Something went wrong while sign in", err: error.message})
     }
 }
+
+export const handleAuthorSignOut = (req, res)=>{
+    return res.clearCookie("token").redirect("/")
+}

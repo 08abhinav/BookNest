@@ -19,5 +19,5 @@ export const handleAuthorLoginView = (req, res)=>{
 }
 
 export const handleAuthorHome = (req, res)=>{
-    return res.render('authorHome')
+    return res.render('authorHome', {author: req.user})
 }
