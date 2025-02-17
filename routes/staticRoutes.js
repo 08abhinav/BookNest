@@ -5,7 +5,7 @@ const staticRoute = express.Router()
 
 staticRoute.get('/', handleHomeView)
 staticRoute.get('/authorView', handleAuthorView)
-staticRoute.get('/authorSignin', handleAuthorSigninView)
+staticRoute.get('/authorSignup', handleAuthorSigninView)
 staticRoute.get('/authorLogin', handleAuthorLoginView)
 staticRoute.get('/getStarted', handleGetStarted)
 

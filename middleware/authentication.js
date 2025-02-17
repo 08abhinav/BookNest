@@ -1,10 +1,8 @@
 import { validateToken } from "../services/authorization.js";
 
-export function checkForAuthentication(cookie){
+export function checkForAuthentication(cookieName){
     return(req, res, next)=>{
-
         const tokenCookieValue = req.cookies[cookieName];
-
         if(!tokenCookieValue) return next();
 
         try {

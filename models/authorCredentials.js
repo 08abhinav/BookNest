@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { createToken } from "../services/authorization.js";
+import bcrypt from 'bcrypt'
 
 const authorCredentials = new Schema({
     fullName:{
@@ -25,22 +26,21 @@ authorCredentials.pre("save", async function(next){
     if(!author.isModified('password')) return;
 
     const saltRounds = 10;
-    const hashedPassword = bcrypt.hash(this.password, saltRounds)
-
-    this.password = hashedPassword;
+    const hashedPassword = await bcrypt.hash(author.password, saltRounds)
+    author.password = hashedPassword;
     next();
 })
 
 
 authorCredentials.static("matchPasswordAndGenerateToken", async function(email, password){
-    const author = await this.find({email})
+    const author = await this.findOne({email})
     if(!author) throw new Error("User not found");
 
     const isMatch = await bcrypt.compare(password, author.password)
     if(!isMatch) throw new Error("Incorrect password");
 
     const token = createToken(author)
-    next()
+    return token
 })
 
-const AuthorModel = mongoose.model("AuthorModel", authorCredentials);
+export const AuthorModel = mongoose.model("AuthorModel", authorCredentials);
