@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Create Book</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <div class="container d-flex justify-content-center">
+        <div class="card shadow-lg p-4 rounded mt-4 mb-4 bg-secondary w-50" style="width: 350px;">
+            <h2 class="text-center mb-3 ">Add Book</h2>
+            <form action="/user/signup" method="post">
+                <div class="mb-3">
+                    <label for="title" class="form-label fs-5 fw-bold">Title</label>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="Enter title of your book" aria-describedby="title">
+                </div>
+                <div class="mb-3">
+                    <label for="authors" class="form-label fs-5 fw-bold">Authors</label>
+                    <input type="text" class="form-control" name="authors" id="authors" placeholder="Name of author" aria-describedby="authors">
+                </div>
+                <div class="mb-3">
+                    <label for="genre" class="form-label fs-5 fw-bold">Genre</label>
+                    <input type="text" class="form-control" name="genre" id="genre" placeholder="Enter genre" aria-describedby="genre">
+                </div>
+                <div class="mb-3">
+                    <label for="link" class="form-label fs-5 fw-bold">Book link</label>
+                    <input type="file" accept="pdf" class="form-control" name="link" placeholder="Enter link to your book" id="link">
+                </div>
+                <button type="submit" class="btn btn-primary w-100 mt-3">Submit</button>
+            </form>
+        </div>
+    </div>
+    <%- include('./partials/script') %>
+</body>
+</html>

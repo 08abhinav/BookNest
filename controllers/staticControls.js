@@ -35,3 +35,10 @@ export const handleUserLogin = (req, res)=>{
 export const handleUserHome = (req, res)=>{
     return res.render('userHome', {user: req.user})
 }
+
+
+
+//Book's
+export const handleCreateBook = (req, res)=>{
+    return res.render('createBook')
+}
