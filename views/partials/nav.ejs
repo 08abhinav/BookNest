@@ -9,12 +9,13 @@
                   <a class="nav-link active text-secondary fw-bold fs-5" aria-current="page" href="/">Home</a>
               </li>
               <li class="nav-item dropdown px-3">
-                  <a class="nav-link dropdown-toggle text-secondary fw-bold fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle text-secondary fw-bold fs-5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <%- author.email %>
                   </a>
-                  <ul class="dropdown-menu bg-dark">
-                      <li><a class="dropdown-item text-info bg-dark fw-bolder" href="/author/signout">SignOut</a></li>
-                  </ul>
+                    <ul class="dropdown-menu bg-dark">
+                        <li><a class="dropdown-item text-secondary bg-dark fw-bolder" href="/create">Update Profile</a></li>
+                        <li><a class="dropdown-item text-secondary bg-dark fw-bolder" href="/author/signout">SignOut</a></li>
+                    </ul>
               </li>
           </ul>
         </div>
