@@ -6,30 +6,45 @@
 </head>
 <body>
     <%- include('./partials/nav') %>
-    <div class="container d-flex justify-content-center">
-        <div class="card shadow-lg p-4 rounded mt-4 mb-4 bg-secondary w-50" style="width: 350px;">
-            <h2 class="text-center mb-3 ">Add Book</h2>
-            <form action="/user/signup" method="post">
+    <div class="container d-flex justify-content-center w-100">
+        <div class="card shadow-lg p-4 rounded mt-4 mb-4 bg-secondary w-50">
+            <h2 class="text-center mb-3 text-white">Add Book</h2>
+            <form action="#" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
-                    <label for="title" class="form-label fs-5 fw-bold">Title</label>
-                    <input type="text" class="form-control" name="title" id="title" placeholder="Enter title of your book" aria-describedby="title">
+                    <label for="title" class="form-label fs-5 fw-bold text-white">Title</label>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="Enter book title" required>
                 </div>
+
                 <div class="mb-3">
-                    <label for="authors" class="form-label fs-5 fw-bold">Authors</label>
-                    <input type="text" class="form-control" name="authors" id="authors" placeholder="Name of author" aria-describedby="authors">
+                    <label for="authors" class="form-label fs-5 fw-bold text-white">Authors</label>
+                    <input type="text" class="form-control" name="authors" id="authors" placeholder="Enter author(s) name" required>
+                    <small class="text-light">Separate multiple authors with commas</small>
                 </div>
+
                 <div class="mb-3">
-                    <label for="genre" class="form-label fs-5 fw-bold">Genre</label>
-                    <input type="text" class="form-control" name="genre" id="genre" placeholder="Enter genre" aria-describedby="genre">
+                    <label for="genre" class="form-label fs-5 fw-bold text-white">Genre</label>
+                    <select class="form-select" name="genre" id="genre" required>
+                        <option value="" disabled selected>Select a genre</option>
+                        <option value="Fiction">Fiction</option>
+                        <option value="Non-fiction">Non-fiction</option>
+                        <option value="Mystery">Mystery</option>
+                        <option value="Sci-Fi">Sci-Fi</option>
+                        <option value="Biography">Biography</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Poetry">Poetry</option>
+                        <option value="Other">Other</option>
+                    </select>
                 </div>
+    
                 <div class="mb-3">
-                    <label for="link" class="form-label fs-5 fw-bold">Book link</label>
-                    <input type="file" accept="pdf" class="form-control" name="link" placeholder="Enter link to your book" id="link">
+                    <label for="file" class="form-label fs-5 fw-bold text-white">Upload Book (PDF)</label>
+                    <input type="file" class="form-control" name="file" id="file" accept="application/pdf" required>
                 </div>
                 <button type="submit" class="btn btn-primary w-100 mt-3">Submit</button>
             </form>
         </div>
-    </div>
+    </div>    
     <%- include('./partials/script') %>
 </body>
 </html>
