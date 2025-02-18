@@ -8,6 +8,7 @@ import authorRoute from './routes/authorRoutes.js';
 import authorCreation from './routes/authorCreation.js';
 import cookieParser from 'cookie-parser';
 import userCreation from './routes/userCreation.js';
+import bookRoute from './routes/bookRoutes.js'
 
 const app = express()
 
@@ -24,6 +25,7 @@ app.use('/', staticRoute)
 app.use('/author-api', authorRoute)
 app.use('/author', authorCreation)
 app.use('/user', userCreation)
+app.use('/book', bookRoute)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, ()=>{console.log(`App running on port: ${PORT}`)})

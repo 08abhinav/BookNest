@@ -11,7 +11,7 @@ const staticRoute = express.Router()
 staticRoute.get('/', handleHomeView)
 
 //Author's static routes
-staticRoute.get('/create', handleAuthorView)
+staticRoute.get('/authorProfile', handleAuthorView)
 staticRoute.get('/authorHome', handleAuthorHome)
 staticRoute.get('/authorSignup', handleAuthorSigninView)
 staticRoute.get('/authorLogin', handleAuthorLoginView)
