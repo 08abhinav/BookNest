@@ -22,7 +22,7 @@ app.use(checkForUserAuthentication("user"))
 app.use(express.static(path.resolve('./public')))
 
 app.use('/', staticRoute)
-app.use('/author-api', authorRoute)
+app.use('/api', authorRoute)
 app.use('/author', authorCreation)
 app.use('/user', userCreation)
 app.use('/book', bookRoute)

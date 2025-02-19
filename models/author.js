@@ -1,5 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-import { Books } from "./books.js";
 
 const authorSchema = new Schema({
     authorName:{
