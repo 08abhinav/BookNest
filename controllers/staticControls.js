@@ -42,3 +42,7 @@ export const handleUserHome = (req, res)=>{
 export const handleCreateBook = (req, res)=>{
     return res.render('createBook', {author: req.author})
 }
+
+export const handleViewBook = (req, res)=>{
+    return res.render('bookView', {user: req.user})
+}
