@@ -11,7 +11,7 @@ export const handleBookCreation = async(req, res)=>{
             title,
             link: `uploads/${req.file.filename}`,
             genre,
-            authors: req.author._id
+            authors: [req.author._id]
         })
         return res.redirect('/authorHome');
     } catch (error) {

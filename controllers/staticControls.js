@@ -39,10 +39,21 @@ export const handleUserHome = (req, res)=>{
 
 
 //Book's
+import { Books } from "../models/books.js"
+
 export const handleCreateBook = (req, res)=>{
     return res.render('createBook', {author: req.author})
 }
 
-export const handleViewBook = (req, res)=>{
-    return res.render('bookView', {user: req.user})
+export const handleViewBook = async (req, res)=>{
+    try {
+        const books = await Books.find().populate({ 
+            path: "authors",
+            select: "authorName",
+            model: "Author"});
+        console.log(books)
+        return res.render('bookView', {user: req.user, books})
+    } catch (error) {
+        return res.status(504).json({message: "Something went wrong while fetching the book", err: error.message})
+    }
 }

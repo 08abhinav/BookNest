@@ -6,14 +6,32 @@
 </head>
 <body>
     <%- include('./partials/nav') %>
-    <div class="container mt-5 w-100">
-        <div class="card shadow-sm p-4 text-center w-50">
-            <h2 class="fw-bold">Book Title</h2>
-            <p class="text-muted mb-1">Author: <span class="fw-semibold">John Doe</span></p>
-            <p class="text-muted">Genre: <span class="fw-semibold">Fiction</span></p>
-            <a href="#" class="btn btn-primary mt-3">Go to Book</a>
-        </div>
-    </div>
+    <% if (locals.books) { %>
+        <% books.forEach((ele, i) => { %>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-md p-4 text-center bg-dark">
+                            <h2 class="fw-bold text-success"><%- ele.title %></h2>
+                            <p class="mb-1 text-success">Author: <span class="fw-semibold"><%- ele.authors %></span></p>
+                            <p class="text-success">Genre: <span class="fw-semibold"><%- ele.genre %></span></p>
+                            <a href="#" class="btn btn-primary mt-3">Go to Book</a>
+                        </div>
+                    </div>
+        
+                    <!-- <div class="col-md-4 mb-4">
+                        <div class="card shadow-md p-4 text-center bg-dark">
+                            <h2 class="fw-bold text-success">Another Book</h2>
+                            <p class="mb-1 text-success">Author: <span class="fw-semibold">Jane Doe</span></p>
+                            <p class="text-success">Genre: <span class="fw-semibold">Mystery</span></p>
+                            <a href="#" class="btn btn-primary mt-3">Go to Book</a>
+                        </div>
+                    </div> -->
+                </div>
+            </div>    
+        <% }) %>
+     
+    <% } %>
     <%- include('./partials/script') %>  
 </body>
 </html>

@@ -10,6 +10,7 @@ export function createToken(author){
     
     const payload = {
         _id: author._id,
+        name: author.name,
         email: author.email,
     }
 
@@ -21,7 +22,6 @@ export function validateToken(token){
     const payload = jwt.verify(token, secret)
     return payload
 }
-
 
 
 //User's token creation

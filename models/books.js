@@ -15,7 +15,6 @@ const bookSchema = new Schema({
         type: String,
         required: true
     },
-
     authors:[{
         type: mongoose.Types.ObjectId,
         ref: "Author",

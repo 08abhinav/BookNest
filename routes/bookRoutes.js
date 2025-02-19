@@ -5,5 +5,4 @@ const bookRoute = express.Router()
 
 bookRoute.post('/uploads', uploads.single("link"), handleBookCreation)
 
-
 export default bookRoute;
