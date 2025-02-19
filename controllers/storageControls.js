@@ -6,14 +6,14 @@ const storage = multer.diskStorage({
         cb(null, path.resolve('./public/uploads/'));
     },
 
-    filename: function(req, file, cb){
-        const filename = `${Date.now()}- ${file.originalname}`
+    filename: function(req, link, cb){
+        const filename = `${Date.now()}- ${link.originalname}`
         cb(null, filename)
     },
 })
 
-const fileFilter = (req, res, cb)=>{
-    if(file.mimetype === 'application/pdf'){
+const fileFilter = (req, link, cb)=>{
+    if(link.mimetype === 'application/pdf'){
         cb(null, true)
     }else{
         cb(new Error("Only pdfs are allowed"), false)
