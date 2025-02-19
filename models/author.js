@@ -31,7 +31,6 @@ const authorSchema = new Schema({
             default: "https://linkedin.com/in/" 
             }
     }
-
 }, {timestamps:true})
 
 export const Author = mongoose.model("Author", authorSchema)

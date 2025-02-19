@@ -7,19 +7,17 @@ const bookSchema = new Schema({
         trim: true,
         required: true
     },
-
     link:{
         type: String,
         required: true
     },
-
     genre: {
         type: String,
         required: true
     },
 
     authors:[{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: "Author",
         required: true
     }]
