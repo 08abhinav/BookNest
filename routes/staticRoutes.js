@@ -27,6 +27,6 @@ staticRoute.get('/userHome', handleUserHome)
 //Book's static routes
 staticRoute.get('/createBook', handleCreateBook)
 staticRoute.get('/viewBooks', handleViewBook)
-staticRoute.get('/public/:filename', handleSingleViewBook)
+staticRoute.get('/public/uploads/:filename', handleSingleViewBook)
 
 export default staticRoute;

@@ -62,17 +62,17 @@ export const handleViewBook = async (req, res)=>{
 export const handleSingleViewBook = async (req, res) => {
     try {
         const filename = decodeURIComponent(req.params.filename);
-        const filePath = path.resolve("uploads", filename);
+        const filePath = path.resolve("public", "uploads", filename);
 
         res.setHeader("Content-Type", "application/pdf");
         res.sendFile(filePath, (err) => {
             if (err) {
-                console.error("Error sending file:", err);
+                // console.error("Error sending file:", err);
                 res.status(404).send("Book not found");
             }
         });
     } catch (error) {
-        console.error("Error:", error.message);
+        // console.error("Error:", error.message);
         return res.json({ message: "Book not found", error: error.message });
     }
 };
