@@ -2,7 +2,8 @@ import express from "express"
 import { handleAuthorHome, handleAuthorLoginView, handleAuthorSigninView, 
 handleAuthorView, handleGetStarted, handleHomeView, 
 handleUserSignup, handleUserLogin, 
-handleUserHome, handleCreateBook, handleViewBook} from "../controllers/staticControls.js";
+handleUserHome, handleCreateBook, handleViewBook,
+handleSingleViewBook} from "../controllers/staticControls.js";
  
 
 const staticRoute = express.Router()
@@ -26,5 +27,6 @@ staticRoute.get('/userHome', handleUserHome)
 //Book's static routes
 staticRoute.get('/createBook', handleCreateBook)
 staticRoute.get('/viewBooks', handleViewBook)
+staticRoute.get('/public/:filename', handleSingleViewBook)
 
 export default staticRoute;

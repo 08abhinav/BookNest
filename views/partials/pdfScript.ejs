@@ -1,0 +1,29 @@
+<script>
+const url = "http://yourserver.com/uploads/book.pdf"; // Change this to your PDF URL
+
+const loadingTask = pdfjsLib.getDocument(url);
+loadingTask.promise.then(pdf => {
+    console.log("PDF loaded");
+
+    // Load the first page
+    pdf.getPage(1).then(page => {
+        console.log("Page loaded");
+
+        const scale = 1.5; // Adjust scaling for better quality
+        const viewport = page.getViewport({ scale });
+
+        // Prepare the canvas using PDF dimensions
+        const canvas = document.getElementById("pdfViewer");
+        const context = canvas.getContext("2d");
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        // Render PDF page into the canvas
+        const renderContext = {
+            canvasContext: context,
+            viewport: viewport,
+        };
+        page.render(renderContext);
+    });
+});
+</script>

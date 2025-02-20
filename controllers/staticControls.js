@@ -40,6 +40,7 @@ export const handleUserHome = (req, res)=>{
 
 //Book's
 import { Books } from "../models/books.js"
+import path from "path"
 
 export const handleCreateBook = (req, res)=>{
     return res.render('createBook', {author: req.author})
@@ -57,3 +58,21 @@ export const handleViewBook = async (req, res)=>{
         return res.status(504).json({message: "Something went wrong while fetching the book", err: error.message})
     }
 }
+
+export const handleSingleViewBook = async (req, res) => {
+    try {
+        const filename = decodeURIComponent(req.params.filename);
+        const filePath = path.resolve("uploads", filename);
+
+        res.setHeader("Content-Type", "application/pdf");
+        res.sendFile(filePath, (err) => {
+            if (err) {
+                console.error("Error sending file:", err);
+                res.status(404).send("Book not found");
+            }
+        });
+    } catch (error) {
+        console.error("Error:", error.message);
+        return res.json({ message: "Book not found", error: error.message });
+    }
+};

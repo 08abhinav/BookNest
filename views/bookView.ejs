@@ -13,20 +13,11 @@
                     <div class="col-md-4 mb-4">
                         <div class="card shadow-md p-4 text-center bg-dark">
                             <h2 class="fw-bold text-success"><%- ele.title %></h2>
-                            <p class="mb-1 text-success">Author: <span class="fw-semibold"><%- ele.authors %></span></p>
+                            <!-- <p class="mb-1 text-success">Author: <span class="fw-semibold"><%- ele.authors %></span></p> -->
                             <p class="text-success">Genre: <span class="fw-semibold"><%- ele.genre %></span></p>
-                            <a href="#" class="btn btn-primary mt-3">Go to Book</a>
+                            <a href="/public/ <%= encodeURIComponent(ele.link) %>" target="_blank" class="btn btn-primary mt-3">Go to Book</a>
                         </div>
                     </div>
-        
-                    <!-- <div class="col-md-4 mb-4">
-                        <div class="card shadow-md p-4 text-center bg-dark">
-                            <h2 class="fw-bold text-success">Another Book</h2>
-                            <p class="mb-1 text-success">Author: <span class="fw-semibold">Jane Doe</span></p>
-                            <p class="text-success">Genre: <span class="fw-semibold">Mystery</span></p>
-                            <a href="#" class="btn btn-primary mt-3">Go to Book</a>
-                        </div>
-                    </div> -->
                 </div>
             </div>    
         <% }) %>
