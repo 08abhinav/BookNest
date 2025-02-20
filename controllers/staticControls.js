@@ -62,8 +62,7 @@ export const handleViewBook = async (req, res)=>{
 export const handleSingleViewBook = async (req, res) => {
     try {
         const filename = decodeURIComponent(req.params.filename);
-        const filePath = path.resolve("public", "uploads", filename);
-
+        const filePath = path.resolve("public", filename);
         res.setHeader("Content-Type", "application/pdf");
         res.sendFile(filePath, (err) => {
             if (err) {

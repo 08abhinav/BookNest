@@ -15,7 +15,10 @@
                             <h2 class="fw-bold text-success"><%- ele.title %></h2>
                             <!-- <p class="mb-1 text-success">Author: <span class="fw-semibold"><%- ele.authors %></span></p> -->
                             <p class="text-success">Genre: <span class="fw-semibold"><%- ele.genre %></span></p>
-                            <a href="/public/uploads/<%- encodeURIComponent(ele.link) %>" target="_blank" class="btn btn-primary mt-3">Go to Book</a>
+                            <a href="/public/uploads/<%= encodeURIComponent(ele.link.replace(/^uploads[\/\\]/, "")) %>" target="_blank" class="btn btn-primary mt-3">
+                                Go to Book
+                            </a>
+                            
                         </div>
                     </div>
                 </div>
