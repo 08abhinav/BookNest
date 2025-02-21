@@ -1,3 +1,5 @@
+import { Books} from "../models/books.js"
+
 export const handleHomeView = async (req, res)=>{
     return res.render('home', {author: req.author})
 }   
@@ -22,6 +24,14 @@ export const handleAuthorHome = (req, res)=>{
     return res.render('authorHome', {author: req.author})
 }
 
+export const handlePostedBooks = async(req, res)=>{
+    try {
+        const books = await Books.find({})
+        return res.render('authorDashBoard', {books, author: req.author})
+    } catch (error) {
+        return res.status(504).json({message: "Something went wrong while fetching the book", err: error.message})
+    }
+}
 
 //User's
 export const handleUserSignup = (req, res)=>{
@@ -39,7 +49,6 @@ export const handleUserHome = (req, res)=>{
 
 
 //Book's
-import { Books } from "../models/books.js"
 import path from "path"
 
 export const handleCreateBook = (req, res)=>{
@@ -52,7 +61,6 @@ export const handleViewBook = async (req, res)=>{
             path: "authors",
             select: "authorName",
             model: "Author"});
-        console.log(books)
         return res.render('bookView', {user: req.user, books})
     } catch (error) {
         return res.status(504).json({message: "Something went wrong while fetching the book", err: error.message})

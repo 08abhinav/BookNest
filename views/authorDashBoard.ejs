@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Posted Books</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <div class="d-flex flex-column align-items-center mt-3">
+        <table class="table w-75 text-center">
+            <thead class="table-success">
+                <tr>
+                    <th scope="col" class="fw-bolder fs-4">#</th>
+                    <th scope="col" class="fw-bolder fs-4">Title</th>
+                    <th scope="col" class="fw-bolder fs-4">Genre</th>
+                    <th scope="col" class="fw-bolder fs-4">Link</th>
+                    <th scope="col" class="fw-bolder fs-4">Update</th>
+                </tr>
+            </thead>
+            <tbody class="table-warning">
+                <% if (locals.books) { %>
+                    <% books.forEach((ele, i) => { %>
+                        <tr>
+                            <td class="fw-bold fs-5"><%- i+1 %></td>
+                            <td class="fw-bold fs-5"><%- ele.title %></td>
+                            <td class="fw-bold fs-5"><%- ele.genre %></td>
+                            <td><a class="fw-bold btn btn-outline-success" href="/<%= ele.link %>" target="_blank">Go To Book</a></td>
+                            <td><a class="fw-bold btn btn-outline-success" href="" target="_blank">Update Book</a></td>
+                        </tr>
+                    <% }) %>
+                <% } %>
+            </tbody>
+        </table>
+        <div class="w-75 d-flex justify-content-start">
+            <a href="/authorHome" class="btn btn-outline-warning">Go Back</a>
+        </div>
+    </div>    
+    <%- include('./partials/script') %>
+</body>
+</html>
