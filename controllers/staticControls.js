@@ -90,7 +90,7 @@ export const handleSingleBook = async(req, res)=>{
         const book = await Books.findById(req.params.id)
         if(!book) return res.json({message: "Book not found"});
 
-        return res.render('bookUpdate', {book: [book]})
+        return res.render('bookUpdate', {book})
     } catch (error) {
         return res.json({message:"Something went wrong", error:error.message})
     }

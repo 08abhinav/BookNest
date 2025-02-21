@@ -20,20 +20,25 @@ export const handleBookCreation = async(req, res)=>{
 }
 
 
-export const handleBookUpdation = async(req, res)=>{
+export const handleBookUpdation = async (req, res) => {
     try {
-        const {title, genre, link} = req.body;
-        const book = await Books.findByIdAndUpdate(req.params.id,{
-            title, 
-            genre, 
-            link
-        }, {new: true})
+        const { title, genre } = req.body;
+        
+        const book = await Books.findById(req.params.id);
         if (!book) {
-            return res.status(404).json({message: "Task not found"});
+            return res.status(404).json({ message: "Book not found" });
         }
-        const books = await Books.find({})
-        return res.redirect('/postedBooks', {books})
+
+        book.title = title;
+        book.genre = genre;
+
+        if (req.file) {
+            book.link = "/uploads/" + req.file.filename; 
+        }
+        await book.save();
+
+        return res.redirect('/postedBooks');
     } catch (error) {
-        return res.status(404).json({message:"Something went wrong while updation", error: error.message})
+        return res.status(500).json({ message: "Something went wrong while updating", error: error.message });
     }
-}
+};

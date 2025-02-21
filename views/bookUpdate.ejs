@@ -7,29 +7,52 @@
 <body>
    <%- include('./partials/nav') %>
    <div class="d-flex justify-content-center mt-5">
-        <form action="/updateBook/<%= book._id %>" method="POST" class="w-50 p-4 border rounded bg-light shadow">
+        <form action="/updateBook/<%= book._id %>?_method=PUT" method="POST" class="w-50 p-4 border border-dark rounded bg-dark text-white shadow">
             <h2 class="text-center mb-4">Update Book</h2>
 
             <!-- Title Field -->
             <div class="mb-3">
-                <label for="title" class="form-label fw-bold">Title:</label>
-                <input type="text" class="form-control" id="title" name="title" value="<%= book.title %>" required>
+                <label for="title" class="form-label fw-bold fs-4">Title:</label>
+                <input type="text" class="form-control fs fs-5" id="title" name="title" value="<%= book.title %>" required>
             </div>
 
             <!-- Genre Field -->
             <div class="mb-3">
-                <label for="genre" class="form-label fw-bold">Genre:</label>
-                <input type="text" class="form-control" id="genre" name="genre" value="<%= book.genre %>" required>
-            </div>
+                <label for="genre" class="form-label fs-5 fw-bold text-white">Genre</label>
+                <select class="form-select" name="genre" id="genre" required>
+                    <option value="" disabled <%= !book.genre ? "selected" : "" %>>Select a genre</option>
+                    <option value="Fiction" <%= book.genre === "Fiction" ? "selected" : "" %>>Fiction</option>
+                    <option value="Non-fiction" <%= book.genre === "Non-fiction" ? "selected" : "" %>>Non-fiction</option>
+                    <option value="Mystery" <%= book.genre === "Mystery" ? "selected" : "" %>>Mystery</option>
+                    <option value="Sci-Fi" <%= book.genre === "Sci-Fi" ? "selected" : "" %>>Sci-Fi</option>
+                    <option value="Biography" <%= book.genre === "Biography" ? "selected" : "" %>>Biography</option>
+                    <option value="Fantasy" <%= book.genre === "Fantasy" ? "selected" : "" %>>Fantasy</option>
+                    <option value="Horror" <%= book.genre === "Horror" ? "selected" : "" %>>Horror</option>
+                    <option value="Poetry" <%= book.genre === "Poetry" ? "selected" : "" %>>Poetry</option>
+                    <option value="Other" <%= book.genre === "Other" ? "selected" : "" %>>Other</option>
+                </select>
+            </div>            
 
             <!-- Link Field -->
             <div class="mb-3">
-                <label for="link" class="form-label fw-bold">Book Link:</label>
-                <input type="text" class="form-control" id="link" name="link" value="<%= book.link %>" required>
-            </div>
+                <label for="pdf" class="form-label fs-5 fw-bold text-white">Book PDF:</label>
+            
+                <!-- Show the current PDF link if available -->
+                <% if (book.link) { %>
+                    <div class="mb-2">
+                        <a href="/<%= book.link %>" target="_blank" class="text-decoration-none fw-bold text-primary">
+                            📄 View Current PDF
+                        </a>
+                    </div>
+                <% } %>
+            
+                <!-- File input for updating the PDF -->
+                <input type="file" class="form-control fs-5" id="pdf" name="pdf" accept="application/pdf">
+                <small class="text-light">Upload a new PDF file if you want to replace the existing one.</small>
+            </div>            
 
             <!-- Submit & Back Buttons -->
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between mt-5">
                 <a href="/authorHome" class="btn btn-outline-warning">Go Back</a>
                 <button type="submit" class="btn btn-success">Update Book</button>
             </div>
