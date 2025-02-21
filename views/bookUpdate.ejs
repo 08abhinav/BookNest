@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <%- include('./partials/head') %>
+    <title>Update book</title>
+</head>
+<body>
+   <%- include('./partials/nav') %>
+   <div class="d-flex justify-content-center mt-5">
+        <form action="/updateBook/<%= book._id %>" method="POST" class="w-50 p-4 border rounded bg-light shadow">
+            <h2 class="text-center mb-4">Update Book</h2>
+
+            <!-- Title Field -->
+            <div class="mb-3">
+                <label for="title" class="form-label fw-bold">Title:</label>
+                <input type="text" class="form-control" id="title" name="title" value="<%= book.title %>" required>
+            </div>
+
+            <!-- Genre Field -->
+            <div class="mb-3">
+                <label for="genre" class="form-label fw-bold">Genre:</label>
+                <input type="text" class="form-control" id="genre" name="genre" value="<%= book.genre %>" required>
+            </div>
+
+            <!-- Link Field -->
+            <div class="mb-3">
+                <label for="link" class="form-label fw-bold">Book Link:</label>
+                <input type="text" class="form-control" id="link" name="link" value="<%= book.link %>" required>
+            </div>
+
+            <!-- Submit & Back Buttons -->
+            <div class="d-flex justify-content-between">
+                <a href="/authorHome" class="btn btn-outline-warning">Go Back</a>
+                <button type="submit" class="btn btn-success">Update Book</button>
+            </div>
+        </form>
+    </div>
+
+   <%- include('./partials/script') %>
+</body>
+</html>

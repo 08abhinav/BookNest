@@ -16,6 +16,24 @@ export const handleBookCreation = async(req, res)=>{
         return res.redirect('/authorHome');
     } catch (error) {
         return res.status(404).json({message:"Something went wrong", error: error.message})
+    }
+}
 
+
+export const handleBookUpdation = async(req, res)=>{
+    try {
+        const {title, genre, link} = req.body;
+        const book = await Books.findByIdAndUpdate(req.params._id,{
+            title, 
+            genre, 
+            link
+        })
+        if (!book) {
+            return res.status(404).json({message: "Task not found"});
+        }
+        const books = await Books.find({})
+        return res.redirect('/postedBooks', {books})
+    } catch (error) {
+        return res.status(404).json({message:"Something went wrong while updation", error: error.message})
     }
 }
