@@ -23,11 +23,11 @@ export const handleBookCreation = async(req, res)=>{
 export const handleBookUpdation = async(req, res)=>{
     try {
         const {title, genre, link} = req.body;
-        const book = await Books.findByIdAndUpdate(req.params._id,{
+        const book = await Books.findByIdAndUpdate(req.params.id,{
             title, 
             genre, 
             link
-        })
+        }, {new: true})
         if (!book) {
             return res.status(404).json({message: "Task not found"});
         }

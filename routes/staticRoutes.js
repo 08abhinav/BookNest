@@ -4,7 +4,8 @@ handleAuthorView, handleGetStarted, handleHomeView,
 handleUserSignup, handleUserLogin, 
 handleUserHome, handleCreateBook, handleViewBook,
 handleSingleViewBook,
-handlePostedBooks} from "../controllers/staticControls.js";
+handlePostedBooks,
+handleSingleBook} from "../controllers/staticControls.js";
  
 
 const staticRoute = express.Router()
@@ -18,7 +19,7 @@ staticRoute.get('/authorSignup', handleAuthorSigninView)
 staticRoute.get('/authorLogin', handleAuthorLoginView)
 staticRoute.get('/getStarted', handleGetStarted)
 staticRoute.get('/postedBooks', handlePostedBooks)
-
+staticRoute.get('/update/:id', handleSingleBook)
 
 //User's static routes
 staticRoute.get('/userLogin', handleUserLogin)

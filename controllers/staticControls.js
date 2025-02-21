@@ -83,3 +83,15 @@ export const handleSingleViewBook = async (req, res) => {
         return res.json({ message: "Book not found", error: error.message });
     }
 };
+
+
+export const handleSingleBook = async(req, res)=>{
+    try {
+        const book = await Books.findById(req.params.id)
+        if(!book) return res.json({message: "Book not found"});
+
+        return res.render('bookUpdate', {book: [book]})
+    } catch (error) {
+        return res.json({message:"Something went wrong", error:error.message})
+    }
+}
