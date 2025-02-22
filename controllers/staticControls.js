@@ -8,6 +8,10 @@ export const handleGetStarted = (req, res)=>{
     return res.render('getStartedView')
 }
 
+export const handleProfile = (req, res)=>{
+    return res.render('authorProfile')
+}
+
 export const handleAuthorView = (req, res)=>{
     return res.render('authorCreateView', {author: req.author})
 }
