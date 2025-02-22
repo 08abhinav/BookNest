@@ -1,4 +1,5 @@
 import { Books} from "../models/books.js"
+import { Author } from "../models/author.js"
 
 export const handleHomeView = async (req, res)=>{
     return res.render('home', {author: req.author})
@@ -8,8 +9,14 @@ export const handleGetStarted = (req, res)=>{
     return res.render('getStartedView')
 }
 
-export const handleProfile = (req, res)=>{
-    return res.render('authorProfile')
+export const handleProfile = async (req, res)=>{
+    try {
+        const data = await Author.find({})
+        console.log(data)
+        return res.render('authorProfile', {author: req.author, data})        
+    } catch (error) {
+        
+    }
 }
 
 export const handleAuthorView = (req, res)=>{
