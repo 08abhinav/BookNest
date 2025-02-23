@@ -1,4 +1,6 @@
 import express from "express"
+import { checkForAuthentication, checkForUserAuthentication } from "../middleware/authentication.js";
+import cookieParser from 'cookie-parser';
 import { handleAuthorHome, handleAuthorLoginView, handleAuthorSigninView, 
 handleAuthorView, handleGetStarted, handleHomeView, 
 handleUserSignup, handleUserLogin, 
@@ -10,21 +12,23 @@ handleProfile} from "../controllers/staticControls.js";
  
 
 const staticRoute = express.Router()
-
+staticRoute.use(cookieParser())
 staticRoute.get('/', handleHomeView)
+staticRoute.get('/getStarted',handleGetStarted)
 
 //Author's static routes
-staticRoute.get('/authorProfile', handleAuthorView)
-staticRoute.get('/authorHome', handleAuthorHome)
-staticRoute.get('/authorSignup', handleAuthorSigninView)
-staticRoute.get('/authorLogin', handleAuthorLoginView)
-staticRoute.get('/getStarted', handleGetStarted)
-staticRoute.get('/profile', handleProfile)
+staticRoute.get('/authorProfile', checkForAuthentication("token"),handleAuthorView)
+staticRoute.get('/authorHome', checkForAuthentication("token"),handleAuthorHome)
+staticRoute.get('/authorSignup', checkForAuthentication("token"),handleAuthorSigninView)
+staticRoute.get('/authorLogin', checkForAuthentication("token"),handleAuthorLoginView)
+staticRoute.get('/profile', checkForAuthentication("token"),handleProfile)
+
+
 
 //User's static routes
-staticRoute.get('/userLogin', handleUserLogin)
-staticRoute.get('/userSignup', handleUserSignup)
-staticRoute.get('/userHome', handleUserHome)
+staticRoute.get('/userLogin', checkForUserAuthentication("user"),handleUserLogin)
+staticRoute.get('/userSignup', checkForUserAuthentication("user"),handleUserSignup)
+staticRoute.get('/userHome', checkForUserAuthentication("user"),handleUserHome)
 
 
 //Book's static routes

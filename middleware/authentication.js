@@ -21,7 +21,6 @@ export function checkForUserAuthentication(userCookie){
         if (!userTokenCookieValue) {
             return next();  
         }
-
         try {
             const userPayload = validateUserToken(userTokenCookieValue)
             req.user = userPayload  

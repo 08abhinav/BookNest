@@ -6,14 +6,12 @@ const userSecret = process.env.USER_SECRET
 
 
 //Author's token creation
-export function createToken(author){
-    
+export function createToken(author){      
     const payload = {
         _id: author._id,
         name: author.name,
         email: author.email,
     }
-
     const token = jwt.sign(payload, secret)
     return token
 }
@@ -30,7 +28,6 @@ export function createUserToken(user){
     _id: user._id,
     email: user.email
    } 
-
    const userToken = jwt.sign(userPayload, userSecret)
    return userToken
 }
