@@ -14,7 +14,7 @@ handleProfile} from "../controllers/staticControls.js";
 const staticRoute = express.Router()
 staticRoute.use(cookieParser())
 staticRoute.get('/', handleHomeView)
-staticRoute.get('/getStarted',handleGetStarted)
+staticRoute.get('/getStarted', handleGetStarted)
 
 //Author's static routes
 staticRoute.get('/authorProfile', checkForAuthentication("token"),handleAuthorView)
@@ -32,10 +32,10 @@ staticRoute.get('/userHome', checkForUserAuthentication("user"),handleUserHome)
 
 
 //Book's static routes
-staticRoute.get('/createBook', handleCreateBook)
+staticRoute.get('/createBook', checkForAuthentication("token"),handleCreateBook)
 staticRoute.get('/viewBooks', handleViewBook)
-staticRoute.get('/postedBooks', handlePostedBooks)
-staticRoute.get('/update/:id', handleSingleBook)
-staticRoute.get('/public/uploads/:filename', handleSingleViewBook)
+staticRoute.get('/postedBooks', checkForAuthentication("token"),handlePostedBooks)
+staticRoute.get('/update/:id', checkForAuthentication("token"),handleSingleBook)
+staticRoute.get('/public/uploads/:filename', checkForAuthentication("token"),handleSingleViewBook)
 
 export default staticRoute;
