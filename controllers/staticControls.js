@@ -12,7 +12,6 @@ export const handleGetStarted = (req, res)=>{
 export const handleProfile = async (req, res)=>{
     try {
         const data = await Author.find({})
-        console.log(data)
         return res.render('authorProfile', {author: req.author, data})        
     } catch (error) {
         
@@ -101,7 +100,7 @@ export const handleSingleBook = async(req, res)=>{
         const book = await Books.findById(req.params.id)
         if(!book) return res.json({message: "Book not found"});
 
-        return res.render('bookUpdate', {book})
+        return res.render('bookUpdate', {book, author: req.author})
     } catch (error) {
         return res.json({message:"Something went wrong", error:error.message})
     }

@@ -7,7 +7,7 @@
 <body>
    <%- include('./partials/nav') %>
    <div class="d-flex justify-content-center mt-5">
-        <form action="/updateBook/<%= book._id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="p-4 border border-dark rounded bg-dark text-white shadow">
+        <form action="/updateBook/<%= book._id %>" method="POST" enctype="multipart/form-data" class="p-4 border border-dark rounded bg-dark text-white shadow">
             <input type="hidden" name="_method" value="PUT">
             <h2 class="text-center mb-4">Update Book</h2>
 

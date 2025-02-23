@@ -4,6 +4,6 @@ import { handleBookCreation, handleBookUpdation } from "../controllers/booksCont
 const bookRoute = express.Router()
 
 bookRoute.post('/uploads', uploads.single("link"), handleBookCreation)
-bookRoute.put("/updateBook/:id", uploads.single("pdf"), handleBookUpdation);
+bookRoute.post("/updateBook/:id", uploads.single("pdf"), handleBookUpdation);
 
 export default bookRoute;
