@@ -3,7 +3,6 @@ import express from "express"
 import path from 'path'
 import methodOverride from "method-override"
 import {dbConnect} from "./config.js"
-import {checkForAuthentication, checkForUserAuthentication} from "./middleware/authentication.js"
 import staticRoute from './routes/staticRoutes.js';
 import authorRoute from './routes/authorRoutes.js';
 import authorCreation from './routes/authorCreation.js';
@@ -19,8 +18,6 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(cookieParser())
 app.use(methodOverride("_method"))
-app.use(checkForAuthentication("token"))
-app.use(checkForUserAuthentication("user"))
 app.use(express.static(path.resolve('./public')))
 
 app.use('/', staticRoute)

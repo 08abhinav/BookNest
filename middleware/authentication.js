@@ -8,7 +8,7 @@ function isPublicRoute(url){
 
 export function checkForAuthentication(cookieName){
     return(req, res, next)=>{
-        if (isPublicRoute(req.originalUrl)){
+        if (isPublicRoute(req.originalUrl)|| req.method === "POST"){
             return next();
         }
 
@@ -32,7 +32,7 @@ export function checkForAuthentication(cookieName){
 
 export function checkForUserAuthentication(userCookie){
     return (req, res, next) => {
-        if (isPublicRoute(req.originalUrl)){
+        if (isPublicRoute(req.originalUrl)|| req.method==="POST"){
             return next();
         }
 
