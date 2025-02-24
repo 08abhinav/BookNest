@@ -1,9 +1,14 @@
 import { validateToken, validateUserToken } from "../services/authorization.js";
 
+function isPublicRoute(url){
+    const publicRoutes = ['/', '/getStarted', '/authorLogin', '/authorSignup', '/userSignup', '/userLogin']
+    return publicRoutes.includes(url)
+}
+
+
 export function checkForAuthentication(cookieName){
     return(req, res, next)=>{
-        const publicRoutes = ['/', '/getStarted'];
-        if (publicRoutes.includes(req.originalUrl)) {
+        if (isPublicRoute(req.originalUrl)){
             return next();
         }
 
@@ -27,13 +32,17 @@ export function checkForAuthentication(cookieName){
 
 export function checkForUserAuthentication(userCookie){
     return (req, res, next) => {
+        if (isPublicRoute(req.originalUrl)){
+            return next();
+        }
+
         const userTokenCookieValue = req.cookies[userCookie]
         if (!userTokenCookieValue) {
-            return next();  
+            return res.status(401).json({ message: "Authentication required" });
         }
         try {
             const userPayload = validateUserToken(userTokenCookieValue)
-            if (!userPayload || !userPayload.role !== "user") {
+            if (!userPayload || userPayload.role !== "user") {
                 return res.status(403).json({ message: "Access denied. Authors only." });
             }
             req.user = userPayload  
@@ -43,3 +52,42 @@ export function checkForUserAuthentication(userCookie){
         }
     }
 }
+
+
+//Middleware for both author and user
+export function checkForAnyAuthentication(authorCookie, userCookie) {
+    return (req, res, next) => {
+        if (isPublicRoute(req.originalUrl)) {
+            return next();
+        }
+
+        const authorToken = req.cookies[authorCookie];
+        const userToken = req.cookies[userCookie];
+
+        if (!authorToken && !userToken) {
+            return res.status(401).json({ message: "Authentication required" });
+        }
+
+        try {
+            if (authorToken) {
+                const authorPayload = validateToken(authorToken);
+                if (authorPayload && authorPayload.role === "author") {
+                    req.author = authorPayload;
+                    return next();
+                }
+            }
+
+            if (userToken) {
+                const userPayload = validateUserToken(userToken);
+                if (userPayload && userPayload.role === "user") {
+                    req.user = userPayload;
+                    return next();
+                }
+            }
+            return res.status(403).json({ message: "Access denied." });
+        } catch (error) {
+            return res.status(401).json({ message: "Authentication failure" });
+        }
+    };
+}
+
